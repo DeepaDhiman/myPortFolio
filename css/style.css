@@ -1264,6 +1264,12 @@ footer .credits a {
   .bg-image {
     background-attachment: scroll;
   }
+  .footer-paralax {
+    padding: 0rem 0 0 0;
+  }
+  .sect-mt4 {
+    margin-top: 0rem;
+  }
 }
 
 @media (max-width: 768px) {
