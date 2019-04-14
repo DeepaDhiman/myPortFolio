@@ -27,7 +27,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 // echo $conn;
-echo "Connected successfully";
+// echo "Connected successfully";
 // $sql = "SELECT * FROM reviews";
 // $result = $conn->query($sql);
 // if ($result->num_rows > 0) {
@@ -41,10 +41,10 @@ echo "Connected successfully";
 // $sql="INSERT INTO reviews ('name', 'email', 'subject', 'comment') VALUES 
 // ('$_POST[fname]','$_POST[email]', '$_POST[subject]', '$_POST[message]')";
 
-$sql = "INSERT INTO reviews(name)VALUES ('opopoop')";
+$sql = "INSERT INTO reviews(name, email)VALUES ('".$_POST["fname"]."', '".$_POST["email"]."')";
 
 if (mysqli_query($conn, $sql)) {
-    echo "New record created successfully";
+    // echo "New record created successfully";
 } else {
     echo "Error: " . $sql . "" . mysqli_error($conn);
 }
