@@ -26,11 +26,11 @@ $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n".
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-echo "Connected successfully";
+// echo "Connected successfully";
 $sql = "INSERT INTO reviews(name, email, subject, comment) VALUES ('".$_POST["fname"]."', '".$_POST["email"]."', '".$_POST["subject"]."', '".$_POST["message"]."')";
 
 if (mysqli_query($conn, $sql)) {
-    echo "New record created successfully";
+    echo "Your Feedback has been sent. Thank you!";
 } else {
     echo "Error: " . $sql . "" . mysqli_error($conn);
 }
