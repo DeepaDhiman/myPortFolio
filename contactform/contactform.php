@@ -16,25 +16,12 @@ $allowedOrigins = array(
     }
   }
 
-// $dbhost = "ec2-54-247-70-127.eu-west-1.compute.amazonaws.com";
-// $dbuser = "suegglofbljiqg";
-// $dbpass = "bb144b5fa474592d1997942bb2b93e12c93521fab3c2a68c66443f07de42105e";
-// $db = "dbs4blrh5b7ff8";
-$host        = "host = ec2-54-247-70-127.eu-west-1.compute.amazonaws.com";
-$port        = "port = 5432";
-$dbname      = "dbname = dbs4blrh5b7ff8";
-$credentials = "user = suegglofbljiqg password=bb144b5fa474592d1997942bb2b93e12c93521fab3c2a68c66443f07de42105e";
+$dbhost = "sql12.freemysqlhosting.net";
+$dbuser = "sql12287869";
+$dbpass = "Q6Qsi4rmcl";
+$db = "sql12287869";
 
-// $db_connection = pg_connect("host=localhost dbname=DBNAME user=USERNAME password=PASSWORD");
-// $conn = pg_connect($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
-
-$conn = pg_connect("$host $port $dbname $credentials");
-// if($conn) {
-//    echo "Error : Unable to open database\n";
-// } else {
-//    echo "Opened database successfully\n";
-// }
-
+$conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -42,9 +29,9 @@ if ($conn->connect_error) {
 // echo "Connected successfully";
 $sql = "INSERT INTO reviews(name, email, subject, comment) VALUES ('".$_POST["fname"]."', '".$_POST["email"]."', '".$_POST["subject"]."', '".$_POST["message"]."')";
 
-if (pg_query($conn, $sql)) {
+if (mysqli_query($conn, $sql)) {
     echo "Your Feedback has been sent. Thank you!";
 } else {
-    echo "Error: " . $sql . "" . pg_error($conn);
+    echo "Error: " . $sql . "" . mysqli_error($conn);
 }
 ?>
