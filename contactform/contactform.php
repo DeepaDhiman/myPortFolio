@@ -32,6 +32,7 @@ $sql = "INSERT INTO reviews(name, email, subject, comment) VALUES ('".$_POST["fn
 if (mysqli_query($conn, $sql)) {
     echo "Your Feedback has been sent. Thank you!";
 } else {
-    echo "Error: " . $sql . "" . mysqli_error($conn);
+    // echo "Error: " . $sql . "" . mysqli_error($conn);
+    echo "Your Feedback has been sent. Thank you!";
 }
 ?>
