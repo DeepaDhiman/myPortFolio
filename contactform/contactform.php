@@ -16,10 +16,10 @@ $allowedOrigins = array(
     }
   }
 
-$dbhost = "sql12.freemysqlhosting.net";
-$dbuser = "sql12287869";
-$dbpass = "Q6Qsi4rmcl";
-$db = "sql12287869";
+$dbhost = "ec2-54-247-70-127.eu-west-1.compute.amazonaws.com";
+$dbuser = "suegglofbljiqg";
+$dbpass = "bb144b5fa474592d1997942bb2b93e12c93521fab3c2a68c66443f07de42105e";
+$db = "dbs4blrh5b7ff8";
 
 $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
 // Check connection
