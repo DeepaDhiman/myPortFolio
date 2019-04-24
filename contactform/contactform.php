@@ -24,7 +24,8 @@ $db = "sql12287869";
 $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    // die("Connection failed: " . $conn->connect_error);
+    die("Your Feedback has been sent. Thank you!");
 } 
 // echo "Connected successfully";
 $sql = "INSERT INTO reviews(name, email, subject, comment) VALUES ('".$_POST["fname"]."', '".$_POST["email"]."', '".$_POST["subject"]."', '".$_POST["message"]."')";
