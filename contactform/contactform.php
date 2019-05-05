@@ -9,7 +9,7 @@
         $db["pass"],
         ltrim($db["path"], "/")
     ));
-    if(!$db){
+    if(!$pdo){
       echo "Error : Unable to open database\n";
       } else {
       echo "Opened database successfully\n";
