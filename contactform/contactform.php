@@ -14,13 +14,17 @@
       } else {
       echo "Opened database successfully\n";
     }
-    $statement = $link->prepare('INSERT INTO reviews (name, email, subject, comment)
+    $statement = $pdo->prepare('INSERT INTO reviews (name, email, subject, comment)
     VALUES (:name, :email, :subject, :comment)');
 
     $statement->execute([
         'name' => 'Bob',
         'email' => 'bob@gmail.com',
         'subject' => 'testing',
-        'comment' => 'Hii got it'
+        'comment' => 'Hii'
     ]);
+
+    $statement = $pdo->prepare('INSERT INTO testtable (name, email, subject, comment) VALUES (?, ?, ?, ?)');
+
+    $statement->execute(['Bob1', 'bob1@gmail.com', 'testing1', 'Hii1']);
 ?>
