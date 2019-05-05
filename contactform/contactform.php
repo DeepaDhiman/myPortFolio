@@ -14,5 +14,13 @@
       } else {
       echo "Opened database successfully\n";
     }
-    var_dump($db);
+    $statement = $link->prepare('INSERT INTO reviews (name, email, subject, comment)
+    VALUES (:name, :email, :subject, :comment)');
+
+    $statement->execute([
+        'name' => 'Bob',
+        'email' => 'bob@gmail.com',
+        'subject' => 'testing',
+        'comment' => 'Hii got it'
+    ]);
 ?>
