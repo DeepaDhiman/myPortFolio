@@ -1,39 +1,18 @@
 <?php
-// array holding allowed Origin domains
-$allowedOrigins = array(
-    '(http(s)://)?(www\.)?my\-domain\.com'
-  );
-   
-  if (isset($_SERVER['HTTP_ORIGIN']) && $_SERVER['HTTP_ORIGIN'] != '') {
-    foreach ($allowedOrigins as $allowedOrigin) {
-      if (preg_match('#' . $allowedOrigin . '#', $_SERVER['HTTP_ORIGIN'])) {
-        header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
-        header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
-        header('Access-Control-Max-Age: 1000');
-        header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
-        break;
-      }
+    // $db = pg_connect("host=ec2-79-125-4-72.eu-west-1.compute.amazonaws.com port=5432 dbname=dcuoqso0dff69g user=idnvsgjudopxup password=ae6271b8e68779c603d64f5915ac764992785969b7e6f059e21645b713bd45a1");
+    $db = parse_url(getenv("DATABASE_URL") ?: "postgres://idnvsgjudopxup:ae6271b8e68779c603d64f5915ac764992785969b7e6f059e21645b713bd45a1@ec2-79-125-4-72.eu-west-1.compute.amazonaws.com:5432/dcuoqso0dff69g");
+    $pdo = new PDO("pgsql:" . sprintf(
+        "host=%s;port=%s;sslmode=require;user=%s;password=%s;dbname=%s",
+        $db["host"],
+        $db["port"],
+        $db["user"],
+        $db["pass"],
+        ltrim($db["path"], "/")
+    ));
+    if(!$db){
+      echo "Error : Unable to open database\n";
+      } else {
+      echo "Opened database successfully\n";
     }
-  }
-
-$dbhost = "sql12.freemysqlhosting.net";
-$dbuser = "sql12287869";
-$dbpass = "Q6Qsi4rmcl";
-$db = "sql12287869";
-
-$conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
-// Check connection
-if ($conn->connect_error) {
-    // die("Connection failed: " . $conn->connect_error);
-    die("Your Feedback has been sent. Thank you!");
-} 
-// echo "Connected successfully";
-$sql = "INSERT INTO reviews(name, email, subject, comment) VALUES ('".$_POST["fname"]."', '".$_POST["email"]."', '".$_POST["subject"]."', '".$_POST["message"]."')";
-
-if (mysqli_query($conn, $sql)) {
-    echo "Your Feedback has been sent. Thank you!";
-} else {
-    // echo "Error: " . $sql . "" . mysqli_error($conn);
-    echo "Your Feedback has been sent. Thank you!";
-}
+    var_dump($db);
 ?>
