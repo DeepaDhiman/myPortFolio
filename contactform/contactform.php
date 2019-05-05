@@ -18,7 +18,7 @@
     VALUES (:name, :email, :subject, :comment)');
 
     $statement->execute([
-        'name' => $_POST["name"],
+        'name' => $_POST["fname"],
         'email' => $_POST["email"],
         'subject' => $_POST["subject"],
         'comment' => $_POST["message"]
